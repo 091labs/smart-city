@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    
+  </title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style type="text/css">
+    .jumbotron {
+      margin: 100px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Should I buy it?</h1>
+      <p class="lead">Unsure if you should buy it? Fill out the form below and the decision will be easier!</p>
+      <hr class="my-4">
+      <form>
+        <div class="form-group row">
+          <label for="annual_wage" class="col-sm-3 col-form-label">Annual wage (net)</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" id="annual_wage" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="hours_per_week" class="col-sm-3 col-form-label">Working hours / week</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" id="hours_per_week">
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="form-group row">
+          <label for="cost_of_item" class="col-sm-3 col-form-label">Cost of desired item</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" id="cost_of_item" value="">
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="form-group row">
+          <label for="cost_in_hours" class="col-sm-3 col-form-label">Cost in hours</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" id="cost_in_hours" readonly>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+  <script
+    src="http://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script 
+    type="text/javascript" 
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(() => {
+      let wage = 0;
+      let hours = 0;
+      let cost = 0;
+
+      calculate = () => {
+        let hours_per_year = hours * 52;
+        let wage_per_hour = wage / hours_per_year;
+        let cost_in_hours = cost / wage_per_hour;
+        $('#cost_in_hours').val(cost_in_hours);
+      }
+
+      $('#annual_wage').on('input', (event) => {
+        wage = event.target.value;
+        console.log('wage', wage);
+        calculate()
+      })
+      $('#hours_per_week').on('input', (event) => {
+        hours = event.target.value;
+        console.log('hours', hours);
+        calculate()
+      })
+      $('#cost_of_item').on('input', (event) => {
+        cost = event.target.value;
+        console.log('cost', cost);
+        calculate()
+      })
+    });
+  </script>
+</body>
+</html>

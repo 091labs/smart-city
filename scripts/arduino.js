@@ -26,10 +26,10 @@ const lightThreshold = {
   high: 0.55
 }
 const onHighBrightness = function() {
-  console.log('brightness is high! Turn off lights');
+  // console.log('brightness is high! Turn off lights');
 }
 const onLowBrightness = function() {
-  console.log('brightness is low! Turn on lights');
+  // console.log('brightness is low! Turn on lights');
 }
 const lightSensorCallback = function() {
   if(this.level > lightThreshold.high){
@@ -60,9 +60,10 @@ const hallEffectThreshold = {
   high: 520
 }
 const onHallEffectSensorTrigger = function(){
+  console.log('sensor - ', this.value)
   if(this.value > hallEffectThreshold.high || 
      this.value < hallEffectThreshold.low){
-    console.log('a hall effect sensor was triggered');
+    // console.log('a hall effect sensor was triggered');
 
     // toggle the barrier (ie. servo)
     moveBarrierDown = !moveBarrierDown
@@ -71,7 +72,7 @@ const onHallEffectSensorTrigger = function(){
     } else {
       servo.to(0, 1000);
     }
-    console.log('moveBarrierDown?', moveBarrierDown)
+    // console.log('moveBarrierDown?', moveBarrierDown)
   }
 }
 
