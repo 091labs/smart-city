@@ -9,8 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "death": "^1.1.0",
     "express": "^4.16.2",
     "johnny-five": "^0.13.0",
-    "rpio": "^0.9.19"
+    "node-pixel": "^0.9.3",
+    "rpio": "^0.9.19",
+    "serialport": "^6.1.1"
   }
 }
