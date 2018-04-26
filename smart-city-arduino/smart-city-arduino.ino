@@ -1,3 +1,9 @@
+// To Do
+// - second servo
+// - fix power
+// - air quality sensor
+// - street lighting (not enough power or bad wire connections?)
+// - 
 
 //For the neopixels
 #include <Adafruit_NeoPixel.h>
@@ -174,7 +180,8 @@ void readMagneticSensors() {
   int magnetic2Value = analogRead(MAG2_PIN);
   magnetic1Reading = map(magnetic1Value, 0, 1023, 0, 100);
   magnetic2Reading = map(magnetic2Value, 0, 1023, 0, 100);
-
+ // Serial.println(magnetic1Reading );
+  Serial.println(magnetic2Reading );
 }
 
 void readAirQuality() {
@@ -231,7 +238,7 @@ void controlCrossing() {
   // TODO: control railway crossing servos based on magnetic sensors or mode
   switch (railway_mode) {
     case 0:
-        if(magnetic1Reading < 50 && servoSensorSwitchWait + 5000 < millis() ) {
+        if((magnetic1Reading < 50 && servoSensorSwitchWait + 500 < millis()) || (magnetic2Reading > 50 && servoSensorSwitchWait + 500 < millis()) ) {
           // toggle crossing          
           if (servo1Position == 1){
             closeCrossing();
